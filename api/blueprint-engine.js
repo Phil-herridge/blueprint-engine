@@ -275,12 +275,22 @@ End of system prompt.
 `;
 
   try {
-    const response = await client.chat.completions.create({
-      model: "gpt-4.1-mini",
-      messages: [
-        { role: "system", content: systemPrompt },
-        { role: "user", content: user_input }
-      ]
+    const response = await client.responses.create({
+  model: "gpt-4.1-mini",
+  input: [
+    {
+      role: "system",
+      content: systemPrompt
+    },
+    {
+      role: "user",
+      content: user_input
+    }
+  ]
+});
+
+res.status(200).json({
+  response: response.output_text
     });
 
     res.status(200).json({
