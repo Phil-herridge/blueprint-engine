@@ -288,6 +288,10 @@ End of system prompt.
     });
 
   } catch (error) {
-    res.status(500).json({ error: "AI request failed" });
-  }
+  console.error("OPENAI ERROR:", error);
+
+  res.status(500).json({
+    error: "AI request failed",
+    details: error.message || error.toString()
+  });
 }
