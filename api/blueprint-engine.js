@@ -127,7 +127,7 @@ End of system prompt.
       input: [
         {
           role: "system",
-          content: [{ type: "text", text: systemPrompt }]
+          type: "input_text"
         },
         {
           role: "user",
